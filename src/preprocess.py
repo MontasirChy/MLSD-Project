@@ -17,7 +17,7 @@ df = pd.read_csv(input_path)
 
 cat = df.select_dtypes(include="object").columns
 num = df.select_dtypes(exclude="object").columns
-num = num.drop(params["target_col"], errors="ignore")
+num = num.drop(columns = params["target"], errors="ignore")
 
 #  converting the categorical features to numerical 
 for col in cat:
