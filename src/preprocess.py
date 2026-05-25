@@ -15,9 +15,9 @@ output_path.mkdir(parents=True, exist_ok=True)
 
 df = pd.read_csv(input_path)
 
-cat = df.select_dtypes(include="object").columns
-num = df.select_dtypes(exclude="object").columns
-num = num.drop(columns = params["target"], errors="ignore")
+cat = [col for col in df.columns if df[col].dtype == "object"]
+num = [col for col in df.columns if df[col].dtype in ["int64", "float64"]]
+num.remove(params["target"])
 
 #  converting the categorical features to numerical 
 for col in cat:
