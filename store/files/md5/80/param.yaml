@@ -4,8 +4,11 @@ preprocess :
   target : 'screen_time_before_sleep'
 
 
-# train:
-#   model: random_forest
-#   n_estimators: 50
-#   max_depth: 12
-#   random_state: 42
+train:
+  model: XGBRegressor
+  n_estimators: 50
+  max_depth: 12
+  random_state: 42
+  target : 'screen_time_before_sleep'
+eval:
+  target : 'screen_time_before_sleep'

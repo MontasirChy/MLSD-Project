@@ -1,6 +1,6 @@
-stage :
+stages :
   preprocess:
-    cmd: python preprocess.py
+    cmd: python preprocess.py ./data/main.csv ./data/prepared
     deps:
       - preprocess.py
       - data/main.csv
@@ -9,11 +9,21 @@ stage :
       - data/processed/test.csv 
   
 
-  
+
   train:
-    cmd: python train.py
+    cmd: python train.py ./data/processed/train.csv ./models/model.pkl
     deps:
       - train.py
       - data/processed/train.csv
     outs:
       - models/model.pkl
+
+  eval :
+    cmd: python .src/eval.py ./data/processed/test.csv ./models/model.pkl ./metrics/metrics.json
+    deps:
+      - eval.py
+      - data/processed/test.csv
+      - models/model.pkl
+    metrics:
+      - metrics/metrics.json
+      
