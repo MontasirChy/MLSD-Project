@@ -9,8 +9,8 @@ import json
 
 param = yaml.safe_load(open("params.yaml"))["eval"]     
 
-model_path = sys.argv[1]
-test_csv = sys.argv[2]
+model_path = sys.argv[2]
+test_csv = sys.argv[1]
 metrics_path = Path(sys.argv[3])
 metrics_path.parent.mkdir(parents=True, exist_ok=True)
 
